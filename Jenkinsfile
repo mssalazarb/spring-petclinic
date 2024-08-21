@@ -7,10 +7,11 @@ pipeline {
       agent {
         docker {
           image 'maven:3.5.0'
+          reuseNode true
         }
       }
       steps {
-        sh 'mvn --version && mvn clean install'
+        sh 'mvn clean install -B -X'
       }
     }
     stage('Docker Build') {
